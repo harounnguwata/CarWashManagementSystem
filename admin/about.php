@@ -12,7 +12,7 @@ if($_POST['submit']=="Update")
 	$pagetype=$_GET['type'];
 	$pagedetails=$_POST['pgedetails'];
 $sql = "UPDATE tblpages SET detail=:pagedetails WHERE type=:pagetype";
-$query = $dbh->prepare($sql);
+$query = $pdo->prepare($sql);
 $query -> bindParam(':pagetype',$pagetype, PDO::PARAM_STR);
 $query-> bindParam(':pagedetails',$pagedetails, PDO::PARAM_STR);
 $query -> execute();
@@ -170,7 +170,7 @@ function MM_jumpMenu(targ,selObj,restore){ //v3.0
 										<?php 
 $pagetype=$_GET['type'];
 $sql = "SELECT detail from tblpages where type=:pagetype";
-$query = $dbh -> prepare($sql);
+$query = $pdo -> prepare($sql);
 $query->bindParam(':pagetype',$pagetype,PDO::PARAM_STR);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);

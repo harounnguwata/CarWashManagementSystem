@@ -4,7 +4,7 @@ session_start();
 include('includes/config.php');
 if(strlen($_SESSION['alogin'])==0)
 	{	
-header('location:index.php');
+header('location:home.php');
 }
 else{
 if(isset($_POST['update']))
@@ -84,7 +84,7 @@ $query->execute();
   	       <h3>Update Contact Information</h3>
 <?php 
 $sql = "SELECT * from tblpages where type='contact'";
-$query = $dbh -> prepare($sql);
+$query = $pdo -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 foreach($results as $result)
