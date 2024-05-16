@@ -2,14 +2,14 @@
             <div class="container" style="box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 1px, rgba(0, 0, 0, 0.07) 0px 2px 2px, rgba(0, 0, 0, 0.07) 0px 4px 4px, rgba(0, 0, 0, 0.07) 0px 8px 8px, rgba(0, 0, 0, 0.07) 0px 16px 16px;">
             <!-----img footer------>
       <img src="./img/footerimg.jpg" style="width:100%;height:100px"><br><hr>
-            </!-----------ends---->
+            <!-----------ends---->
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
                         <div class="footer-contact">
                             <h2>Get In Touch</h2>
 <?php 
 $sql = "SELECT * from tblpages where type='contact'";
-$query = $dbh -> prepare($sql);
+$query = $pdo -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 foreach($results as $result)

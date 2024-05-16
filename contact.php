@@ -9,13 +9,13 @@ $subject=$_POST['subject'];
 $message=$_POST['message'];
 
 $sql="INSERT INTO tblenquiry(FullName,EmailId,Subject,Description) VALUES(:name,:email,:subject,:message)";
-$query = $dbh->prepare($sql);
+$query = $pdo->prepare($sql);
 $query->bindParam(':name',$name,PDO::PARAM_STR);
 $query->bindParam(':email',$email,PDO::PARAM_STR);
 $query->bindParam(':subject',$subject,PDO::PARAM_STR);
 $query->bindParam(':message',$message,PDO::PARAM_STR);
 $query->execute();
-$lastInsertId = $dbh->lastInsertId();
+$lastInsertId = $pdo->lastInsertId();
 if($lastInsertId)
 {
  echo "<script>alert('Query sent successfully');</script>";
@@ -83,7 +83,7 @@ else
                 <div class="row">
 <?php 
 $sql = "SELECT * from tblpages where type='contact'";
-$query = $dbh -> prepare($sql);
+$query = $pdo -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 foreach($results as $result)

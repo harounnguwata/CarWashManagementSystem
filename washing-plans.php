@@ -13,7 +13,7 @@ $message=$_POST['message'];
 $status='New';
 $bno=mt_rand(100000000, 999999999);
 $sql="INSERT INTO tblcarwashbooking(bookingId,packageType,carWashPoint,fullName,mobileNumber,washDate,washTime,message,status) VALUES(:bno,:ptype,:wpoint,:fname,:mobile,:date,:time,:message,:status)";
-$query = $dbh->prepare($sql);
+$query = $pdo->prepare($sql);
 $query->bindParam(':bno',$bno,PDO::PARAM_STR);
 $query->bindParam(':ptype',$ptype,PDO::PARAM_STR);
 $query->bindParam(':wpoint',$wpoint,PDO::PARAM_STR);
@@ -24,7 +24,7 @@ $query->bindParam(':time',$time,PDO::PARAM_STR);
 $query->bindParam(':message',$message,PDO::PARAM_STR);
 $query->bindParam(':status',$status,PDO::PARAM_STR);
 $query->execute();
-$lastInsertId = $dbh->lastInsertId();
+$lastInsertId = $pdo->lastInsertId();
 if($lastInsertId)
 {
  
@@ -179,7 +179,7 @@ else
         <select name="washingpoint" required class="form-control">
                 <option value="">Select Washing Point</option>
            <?php $sql = "SELECT * from tblwashingpoints";
-           $query = $dbh -> prepare($sql);
+           $query = $pdo -> prepare($sql);
             $query->execute();
               $results=$query->fetchAll(PDO::FETCH_OBJ);
                    foreach($results as $result)

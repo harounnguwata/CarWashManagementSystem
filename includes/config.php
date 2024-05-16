@@ -1,16 +1,14 @@
-<?php 
-// DB credentials.
-define('DB_HOST','localhost');
-define('DB_USER','root');
-define('DB_PASS','');
-define('DB_NAME','carwash_db');
-// Establish database connection.
-try
-{
-$dbh = new PDO("mysql:host=".DB_HOST.";dbname=".DB_NAME,DB_USER, DB_PASS,array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));
+<?php
+$dsn ="mysql:hostname=localhost;dbname=carwash_db";
+$dbusername = "root";
+$dbpass = "";
+try{
+$pdo = new PDO($dsn,$dbusername,$dbpass); // PDO Connection; 
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+echo"connected successfully";
+
 }
 catch (PDOException $e)
 {
 exit("Error: " . $e->getMessage());
 }
-?>

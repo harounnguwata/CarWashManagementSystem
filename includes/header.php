@@ -13,7 +13,7 @@
 
 <?php 
 $sql = "SELECT * from tblpages where type='contact'";
-$query = $dbh -> prepare($sql);
+$query = $pdo -> prepare($sql);
 $query->execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 foreach($results as $result)
